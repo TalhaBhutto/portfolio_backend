@@ -6,6 +6,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 // importing routes
 import userRoutes from "./routes/users.js";
+import academicInfo from "./routes/academicInfo.js";
+import careerInfo from "./routes/careerInfo.js";
+import journey from "./routes/journey.js";
+import projects from "./routes/projects.js";
+import skills from "./routes/skills.js";
+import personalInfo from "./routes/personalInfo.js";
 // PROJECT
 // STARTS
 
@@ -20,6 +26,12 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 //adding routes to express
 app.use("/user", userRoutes);
+app.use("/academic", userRoutes);
+app.use("/career", userRoutes);
+app.use("/journey", userRoutes);
+app.use("/projects", userRoutes);
+app.use("/skills", userRoutes);
+app.use("/personal", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
