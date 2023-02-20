@@ -1,15 +1,15 @@
-import AcademicInfo from "../models/academicInfo.js";
+import PersonalInfo from "../models/personalInfo.js";
 import {
   validate,
   allProperties,
   otherProperties,
-} from "../Lists/academicInfo.js";
+} from "../Lists/personalInfo.js";
 
-export const postAcademicInfo = async (req, res) => {
+export const postPersonalInfo = async (req, res) => {
   try {
-    const academicInfo = {};
+    const personalInfo = {};
     validate.forEach((key) => {
-      if (req.body[key]) academicInfo[key] = req.body[key];
+      if (req.body[key]) personalInfo[key] = req.body[key];
       else
         return res.status(404).json({
           status: "FAILED",
@@ -18,14 +18,14 @@ export const postAcademicInfo = async (req, res) => {
         });
     });
     otherProperties.forEach((key) => {
-      if (req.body[key]) academicInfo[key] = req.body[key];
+      if (req.body[key]) personalInfo[key] = req.body[key];
     });
-    await AcademicInfo.create(academicInfo);
-    const result = await AcademicInfo.findById(req.params.academicInfoId);
+    await PersonalInfo.create(personalInfo);
+    const result = await PersonalInfo.findById(req.params.personalInfoId);
     res.status(200).json({
       status: "SUCCESS",
       data: { ...result?._doc },
-      message: "Academic Info added successfully",
+      message: "Personal Info added successfully",
     });
   } catch (error) {
     console.log(error);
@@ -35,23 +35,23 @@ export const postAcademicInfo = async (req, res) => {
   }
 };
 
-export const updateAcademicInfo = async (req, res) => {
+export const updatePersonalInfo = async (req, res) => {
   try {
-    const academicInfo = {};
+    const personalInfo = {};
     allProperties.forEach((key) => {
-      if (req.body[key]) academicInfo[key] = req.body[key];
+      if (req.body[key]) personalInfo[key] = req.body[key];
     });
-    await AcademicInfo.updateOne(
-      { _id: req.params.academicInfoId },
-      academicInfo
+    await PersonalInfo.updateOne(
+      { _id: req.params.personalInfoId },
+      personalInfo
     );
 
-    const result = await AcademicInfo.findById(req.params.academicInfoId);
+    const result = await PersonalInfo.findById(req.params.personalInfoId);
 
     res.status(200).json({
       status: "SUCCESS",
       data: { ...result?._doc },
-      message: "Academic Info updated successfully",
+      message: "Personal Info updated successfully",
     });
   } catch (error) {
     console.log(error);
@@ -61,13 +61,13 @@ export const updateAcademicInfo = async (req, res) => {
   }
 };
 
-export const getAllAcademicInfo = async (req, res) => {
+export const getAllPersonalInfo = async (req, res) => {
   try {
-    const allAcademicInfo = await AcademicInfo.find({ userId: req.UID });
+    const allPersonalInfo = await PersonalInfo.find({ userId: req.UID });
     res.status(200).json({
       status: "SUCCESS",
-      data: allAcademicInfo,
-      message: "All Academic Info",
+      data: allPersonalInfo,
+      message: "All Personal Info",
     });
   } catch (e) {
     res
@@ -76,13 +76,13 @@ export const getAllAcademicInfo = async (req, res) => {
   }
 };
 
-export const getAcademicInfo = async (req, res) => {
+export const getPersonalInfo = async (req, res) => {
   try {
-    const academicInfo = await AcademicInfo.findById(req.params.academicInfoId);
+    const personalInfo = await PersonalInfo.findById(req.params.personalInfoId);
     res.status(200).json({
       status: "SUCCESS",
-      data: academicInfo,
-      message: "All Academic Info",
+      data: personalInfo,
+      message: "All Personal Info",
     });
   } catch (e) {
     res
@@ -91,15 +91,15 @@ export const getAcademicInfo = async (req, res) => {
   }
 };
 
-export const deleteAcademicInfo = async (req, res) => {
+export const deletePersonalInfo = async (req, res) => {
   try {
-    await AcademicInfo.deleteOne({
-      id: req.params.academicInfoId,
+    await PersonalInfo.deleteOne({
+      id: req.params.personalInfoId,
     });
     res.status(200).json({
       status: "SUCCESS",
       data: {},
-      message: "Deleted Academic Info",
+      message: "Deleted Personal Info",
     });
   } catch (e) {
     res

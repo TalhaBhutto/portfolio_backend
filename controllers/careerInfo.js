@@ -1,15 +1,15 @@
-import AcademicInfo from "../models/academicInfo.js";
+import CareerInfo from "../models/careerInfo.js";
 import {
   validate,
   allProperties,
   otherProperties,
-} from "../Lists/academicInfo.js";
+} from "../Lists/careerInfo.js";
 
-export const postAcademicInfo = async (req, res) => {
+export const postCareerInfo = async (req, res) => {
   try {
-    const academicInfo = {};
+    const careerInfo = {};
     validate.forEach((key) => {
-      if (req.body[key]) academicInfo[key] = req.body[key];
+      if (req.body[key]) careerInfo[key] = req.body[key];
       else
         return res.status(404).json({
           status: "FAILED",
@@ -18,14 +18,14 @@ export const postAcademicInfo = async (req, res) => {
         });
     });
     otherProperties.forEach((key) => {
-      if (req.body[key]) academicInfo[key] = req.body[key];
+      if (req.body[key]) careerInfo[key] = req.body[key];
     });
-    await AcademicInfo.create(academicInfo);
-    const result = await AcademicInfo.findById(req.params.academicInfoId);
+    await CareerInfo.create(careerInfo);
+    const result = await CareerInfo.findById(req.params.careerInfoId);
     res.status(200).json({
       status: "SUCCESS",
       data: { ...result?._doc },
-      message: "Academic Info added successfully",
+      message: "Career Info added successfully",
     });
   } catch (error) {
     console.log(error);
@@ -35,23 +35,20 @@ export const postAcademicInfo = async (req, res) => {
   }
 };
 
-export const updateAcademicInfo = async (req, res) => {
+export const updateCareerInfo = async (req, res) => {
   try {
-    const academicInfo = {};
+    const careerInfo = {};
     allProperties.forEach((key) => {
-      if (req.body[key]) academicInfo[key] = req.body[key];
+      if (req.body[key]) careerInfo[key] = req.body[key];
     });
-    await AcademicInfo.updateOne(
-      { _id: req.params.academicInfoId },
-      academicInfo
-    );
+    await CareerInfo.updateOne({ _id: req.params.careerInfoId }, careerInfo);
 
-    const result = await AcademicInfo.findById(req.params.academicInfoId);
+    const result = await CareerInfo.findById(req.params.careerInfoId);
 
     res.status(200).json({
       status: "SUCCESS",
       data: { ...result?._doc },
-      message: "Academic Info updated successfully",
+      message: "Career Info updated successfully",
     });
   } catch (error) {
     console.log(error);
@@ -61,13 +58,13 @@ export const updateAcademicInfo = async (req, res) => {
   }
 };
 
-export const getAllAcademicInfo = async (req, res) => {
+export const getAllCareerInfo = async (req, res) => {
   try {
-    const allAcademicInfo = await AcademicInfo.find({ userId: req.UID });
+    const allCareerInfo = await CareerInfo.find({ userId: req.UID });
     res.status(200).json({
       status: "SUCCESS",
-      data: allAcademicInfo,
-      message: "All Academic Info",
+      data: allCareerInfo,
+      message: "All Career Info",
     });
   } catch (e) {
     res
@@ -76,13 +73,13 @@ export const getAllAcademicInfo = async (req, res) => {
   }
 };
 
-export const getAcademicInfo = async (req, res) => {
+export const getCareerInfo = async (req, res) => {
   try {
-    const academicInfo = await AcademicInfo.findById(req.params.academicInfoId);
+    const careerInfo = await CareerInfo.findById(req.params.careerInfoId);
     res.status(200).json({
       status: "SUCCESS",
-      data: academicInfo,
-      message: "All Academic Info",
+      data: careerInfo,
+      message: "All Career Info",
     });
   } catch (e) {
     res
@@ -91,15 +88,15 @@ export const getAcademicInfo = async (req, res) => {
   }
 };
 
-export const deleteAcademicInfo = async (req, res) => {
+export const deleteCareerInfo = async (req, res) => {
   try {
-    await AcademicInfo.deleteOne({
-      id: req.params.academicInfoId,
+    await CareerInfo.deleteOne({
+      id: req.params.careerInfoId,
     });
     res.status(200).json({
       status: "SUCCESS",
       data: {},
-      message: "Deleted Academic Info",
+      message: "Deleted Career Info",
     });
   } catch (e) {
     res
