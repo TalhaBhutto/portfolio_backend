@@ -1,4 +1,4 @@
-const allProperties = [
+export const allProperties = [
   "title",
   "shortDescription",
   "longDescription",
@@ -14,19 +14,20 @@ const allProperties = [
   "location",
 ];
 export const validate = [
-  "title",
-  "shortDescription",
-  "longDescription",
-  "experience",
-  "isDegree",
-  "isActive",
-  "shortTitle",
-  "institution",
+  "name",
+  "email",
+  "dob",
+  "address",
+  "phone",
+  "designation",
+  "intro",
+  "image",
+  "linkedIn",
+  "facebook",
+  "instagram",
+  "twitter",
+  "github",
+  "resume",
+  "userId",
 ];
-export const otherProperties = [
-  "achievements",
-  "tags",
-  "startDate",
-  "endDate",
-  "location",
-];
+export const otherProperties = ["hobbies", "skills", "tags", "id"];

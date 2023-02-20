@@ -1,32 +1,24 @@
-const allProperties = [
-  "title",
+export const allProperties = [
+  "name",
   "shortDescription",
-  "longDescription",
-  "experience",
-  "isDegree",
-  "isActive",
-  "shortTitle",
-  "institution",
-  "achievements",
-  "tags",
+  "github",
+  "domain",
   "startDate",
   "endDate",
-  "location",
-];
-export const validate = [
-  "title",
-  "shortDescription",
   "longDescription",
-  "experience",
-  "isDegree",
-  "isActive",
-  "shortTitle",
-  "institution",
+  "images",
+  "tech",
+  "features",
+  "userId",
 ];
+export const validate = ["name", "shortDescription", "userId"];
 export const otherProperties = [
-  "achievements",
-  "tags",
+  "github",
+  "domain",
   "startDate",
   "endDate",
-  "location",
+  "longDescription",
+  "images",
+  "tech",
+  "features",
 ];
