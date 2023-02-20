@@ -11,6 +11,7 @@ const skillSchema = mongoose.Schema({
   review: { type: String },
   tags: { type: [String] },
   features: { type: [String] },
+  userId: { type: String, require: true },
 });
 
 export default mongoose.model("skills", skillSchema);

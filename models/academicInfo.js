@@ -14,6 +14,7 @@ const academicInfoSchema = mongoose.Schema({
   startDate: { type: String },
   endDate: { type: String },
   location: { type: String },
+  userId: { type: String, require: true },
 });
 
 export default mongoose.model("academicInfo", academicInfoSchema);

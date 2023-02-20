@@ -19,6 +19,7 @@ const personalInfoSchema = mongoose.Schema({
   skills: { type: [String] },
   tags: { type: [String] },
   id: { type: String },
+  userId: { type: String, require: true },
 });
 
 export default mongoose.model("personalInfo", personalInfoSchema);

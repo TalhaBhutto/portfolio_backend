@@ -6,8 +6,12 @@ const userSchema = mongoose.Schema({
   password: { type: String, require: true },
   dob: { type: String, require: true },
   id: { type: String },
-  role: { type: mongoose.Schema.Types.ObjectId, ref: "personalInfo" },
+  personalInfo: { type: mongoose.Schema.Types.ObjectId, ref: "personalInfo" },
   projects: { type: mongoose.Schema.Types.ObjectId, ref: "projects" },
+  skills: { type: mongoose.Schema.Types.ObjectId, ref: "skills" },
+  journey: { type: mongoose.Schema.Types.ObjectId, ref: "journey" },
+  careerInfo: { type: mongoose.Schema.Types.ObjectId, ref: "careerInfo" },
+  academicInfo: { type: mongoose.Schema.Types.ObjectId, ref: "academicInfo" },
 });
 
 export default mongoose.model("user", userSchema);

@@ -7,6 +7,7 @@ const journeySchema = mongoose.Schema({
   highlights: { type: [String] },
   tags: { type: [String] },
   achievements: { type: [String] },
+  userId: { type: String, require: true },
 });
 
 export default mongoose.model("journey", journeySchema);

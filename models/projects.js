@@ -11,6 +11,7 @@ const projectSchema = mongoose.Schema({
   images: { type: [String] },
   tech: { type: [String] },
   features: { type: [String] },
+  userId: { type: String, require: true },
 });
 
 export default mongoose.model("projects", projectSchema);
